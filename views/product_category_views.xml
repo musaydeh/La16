@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_bom_product_category_form" model="ir.ui.view">
+        <field name="name">view.bom.product.category.form</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']/.." position="after">
+                <group name="first" col="2">
+                    <field name="auto_compute_price_from_bom" class="oe_inline"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

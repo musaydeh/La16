@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="boM_ctructure_price_cost.BomOverviewTable" t-inherit="mrp.BomOverviewTable" owl="1">
+        <xpath expr="//th[@name='th_mrp_bom_h']" position="after">
+            <th t-if="showUomUnitPrice" class="text-end">UOM Unit Price</th>
+        </xpath>
+
+        <xpath expr="//td[@name='td_mrp_bom_f']" position="after">
+            <td t-if="showUomUnitPrice"/>
+        </xpath>
+
+        <xpath expr="//td[@name='td_mrp_bom_b']" position="after">
+            <td t-if="showUomUnitPrice"/>
+        </xpath>
+    </t>
+</templates>

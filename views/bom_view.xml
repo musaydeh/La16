@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_unit_price_mrp_bom_form" model="ir.ui.view">
+        <field name="name">mrp.bom.form.inherit.price.cost</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="fill_base_qty" type="object"
+                            invisible="not apply_update"
+                            string="Fill Base Qty"/>
+                    <button name="update_product_qty_line" type="object"
+                            invisible="not apply_update"
+                            string="Update QTY"/>
+                </header>
+            </xpath>
+
+            <xpath expr="//field[@name='bom_line_ids']/tree//field[@name='product_uom_id']" position="after">
+                <field name="uom_unit_price"/>
+            </xpath>
+            <xpath expr="//field[@name='bom_line_ids']/tree//field[@name='product_qty']" position="before">
+                <field name="base_qty" column_invisible="not parent.apply_update"/>
+            </xpath>
+            <xpath expr="//div[hasclass('o_row')]" position="after">
+                <field name="apply_update"/>
+                <field name="update_qty" invisible="not apply_update"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

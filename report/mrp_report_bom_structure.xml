@@ -1,0 +1,31 @@
+<odoo>
+    <template id="report_mrp_bom_bom_ctructure_price_cost" inherit_id="mrp.report_mrp_bom">
+        <xpath expr="//th[@name='th_mrp_bom_h']" position="after">
+            <th t-if="data['show_uom_unit_price']">UOM Unit Price</th>
+        </xpath>
+
+        <xpath expr="//td[@name='td_mrp_bom']" position="after">
+            <td t-if="data['show_uom_unit_price']">
+                <span t-esc="data['uom_unit_price']"
+                      t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
+            </td>
+        </xpath>
+
+        <xpath expr="//td[@name='td_mrp_bom_f']" position="after">
+            <td t-if="data['show_uom_unit_price']"/>
+        </xpath>
+
+        <xpath expr="//td[@name='td_mrp_bom_byproducts_f']" position="after">
+            <td t-if="data['show_uom_unit_price']"/>
+        </xpath>
+    </template>
+
+    <template id="report_mrp_bom_pdf_line_bom_ctructure_price_cost" inherit_id="mrp.report_mrp_bom_pdf_line">
+        <xpath expr="//td[@name='td_mrp_code']" position="after">
+            <td t-if="data['show_uom_unit_price']">
+                <span t-esc="l.get('uom_unit_price',0)"
+                      t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
+            </td>
+        </xpath>
+    </template>
+</odoo>
